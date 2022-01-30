@@ -17,7 +17,7 @@ use crate::resources::{
 /// The resource representing a Stripe "BalanceTransaction".
 ///
 /// For more details see <https://stripe.com/docs/api/balance_transactions/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BalanceTransaction {
     /// Unique identifier for the object.
     pub id: BalanceTransactionId,
@@ -116,7 +116,7 @@ impl Object for BalanceTransaction {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Fee {
     /// Amount of the fee, in cents.
     pub amount: i64,

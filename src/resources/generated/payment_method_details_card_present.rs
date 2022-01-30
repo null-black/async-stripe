@@ -5,7 +5,7 @@
 use serde_derive::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "payment_method_details_card_present".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PaymentMethodDetailsCardPresent {
     /// The authorized amount.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -85,7 +85,7 @@ pub struct PaymentMethodDetailsCardPresent {
     pub receipt: Option<Box<PaymentMethodDetailsCardPresentReceipt>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PaymentMethodDetailsCardPresentReceipt {
     /// The type of account being debited or credited.
     #[serde(skip_serializing_if = "Option::is_none")]

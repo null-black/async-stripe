@@ -12,7 +12,7 @@ use crate::resources::{BalanceTransaction, Charge, Currency, PaymentIntent, Tran
 /// The resource representing a Stripe "Refund".
 ///
 /// For more details see <https://stripe.com/docs/api/refunds/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Refund {
     /// Unique identifier for the object.
     pub id: RefundId,

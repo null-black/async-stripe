@@ -14,7 +14,7 @@ use crate::resources::{CreateProduct, Currency, Product};
 /// The resource representing a Stripe "Plan".
 ///
 /// For more details see <https://stripe.com/docs/api/plans/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Plan {
     /// Unique identifier for the object.
     pub id: PlanId,
@@ -167,7 +167,7 @@ impl Object for Plan {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PlanTier {
     /// Price for the entire tier.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -190,7 +190,7 @@ pub struct PlanTier {
     pub up_to: Option<Box<i64>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct TransformUsage {
     /// Divide usage by this number.
     pub divide_by: i64,

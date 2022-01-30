@@ -11,7 +11,7 @@ use crate::resources::{CreditNote, Currency, Customer, Invoice};
 /// The resource representing a Stripe "CustomerBalanceTransaction".
 ///
 /// For more details see <https://stripe.com/docs/api/customer_balance_transactions/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CustomerBalanceTransaction {
     /// Unique identifier for the object.
     pub id: CustomerBalanceTransactionId,

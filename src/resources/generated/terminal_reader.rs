@@ -9,7 +9,7 @@ use crate::params::{Expandable, Metadata, Object};
 use crate::resources::TerminalLocation;
 
 /// The resource representing a Stripe "TerminalReaderReader".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct TerminalReader {
     /// Unique identifier for the object.
     pub id: TerminalReaderId,

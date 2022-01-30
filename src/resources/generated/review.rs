@@ -12,7 +12,7 @@ use crate::resources::{Charge, PaymentIntent, ReviewReason};
 /// The resource representing a Stripe "RadarReview".
 ///
 /// For more details see <https://stripe.com/docs/api/reviews/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Review {
     /// Unique identifier for the object.
     pub id: ReviewId,
@@ -95,7 +95,7 @@ impl Object for Review {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct RadarReviewResourceLocation {
     /// The city where the payment originated.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -118,7 +118,7 @@ pub struct RadarReviewResourceLocation {
     pub region: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct RadarReviewResourceSession {
     /// The browser used in this browser session (e.g., `Chrome`).
     #[serde(skip_serializing_if = "Option::is_none")]

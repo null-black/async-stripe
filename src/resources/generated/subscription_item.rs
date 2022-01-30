@@ -12,7 +12,7 @@ use crate::resources::{Currency, Price, SubscriptionItemBillingThresholds, TaxRa
 /// The resource representing a Stripe "SubscriptionItem".
 ///
 /// For more details see <https://stripe.com/docs/api/subscription_items/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct SubscriptionItem {
     /// Unique identifier for the object.
     pub id: SubscriptionItemId,
@@ -341,7 +341,7 @@ impl<'a> UpdateSubscriptionItem<'a> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct SubscriptionItemPriceData {
     pub currency: Currency,
 
@@ -359,7 +359,7 @@ pub struct SubscriptionItemPriceData {
     pub unit_amount_decimal: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct SubscriptionItemPriceDataRecurring {
     pub interval: PlanInterval,
 

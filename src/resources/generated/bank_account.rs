@@ -9,7 +9,7 @@ use crate::params::{Expandable, Metadata, Object};
 use crate::resources::{Account, BankAccountStatus, Currency, Customer};
 
 /// The resource representing a Stripe "BankAccount".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BankAccount {
     /// Unique identifier for the object.
     pub id: BankAccountId,

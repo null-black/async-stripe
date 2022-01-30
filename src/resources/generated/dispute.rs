@@ -12,7 +12,7 @@ use crate::resources::{BalanceTransaction, Charge, Currency, File, PaymentIntent
 /// The resource representing a Stripe "Dispute".
 ///
 /// For more details see <https://stripe.com/docs/api/disputes/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Dispute {
     /// Unique identifier for the object.
     pub id: DisputeId,
@@ -93,7 +93,7 @@ impl Object for Dispute {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DisputeEvidence {
     /// Any server or activity logs showing proof that the customer accessed or downloaded the purchased digital product.
     ///
@@ -221,7 +221,7 @@ pub struct DisputeEvidence {
     pub uncategorized_text: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DisputeEvidenceDetails {
     /// Date by which evidence must be submitted in order to successfully challenge dispute.
     ///

@@ -9,7 +9,7 @@ use crate::params::{Metadata, Object, Timestamp};
 use crate::resources::Currency;
 
 /// The resource representing a Stripe "IssuingSettlement".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct IssuingSettlement {
     /// Unique identifier for the object.
     pub id: IssuingSettlementId,

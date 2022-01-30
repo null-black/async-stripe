@@ -15,7 +15,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Account".
 ///
 /// For more details see <https://stripe.com/docs/api/accounts/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Account {
     /// Unique identifier for the object.
     pub id: AccountId,
@@ -161,7 +161,7 @@ impl Object for Account {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BusinessProfile {
     /// [The merchant category code for the account](https://stripe.com/docs/connect/setting-mcc).
     ///
@@ -200,7 +200,7 @@ pub struct BusinessProfile {
     pub url: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountCapabilities {
     /// The status of the Canadian pre-authorized debits payments capability of the account, or whether the account can directly process Canadian pre-authorized debits charges.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -299,7 +299,7 @@ pub struct AccountCapabilities {
     pub transfers: Option<Box<CapabilityStatus>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountFutureRequirements {
     /// Fields that are due and can be satisfied by providing the corresponding alternative fields instead.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -346,7 +346,7 @@ pub struct AccountFutureRequirements {
     pub pending_verification: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountRequirements {
     /// Fields that are due and can be satisfied by providing the corresponding alternative fields instead.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -394,7 +394,7 @@ pub struct AccountRequirements {
     pub pending_verification: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountRequirementsAlternative {
     /// Fields that can be provided to satisfy all fields in `original_fields_due`.
     pub alternative_fields_due: Vec<String>,
@@ -403,7 +403,7 @@ pub struct AccountRequirementsAlternative {
     pub original_fields_due: Vec<String>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountRequirementsError {
     /// The code for the type of error.
     pub code: AccountRequirementsErrorCode,
@@ -415,7 +415,7 @@ pub struct AccountRequirementsError {
     pub requirement: String,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bacs_debit_payments: Option<Box<AccountBacsDebitPaymentsSettings>>,
@@ -438,7 +438,7 @@ pub struct AccountSettings {
     pub sepa_debit_payments: Option<Box<AccountSepaDebitPaymentsSettings>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountBacsDebitPaymentsSettings {
     /// The Bacs Direct Debit Display Name for this account.
     ///
@@ -447,7 +447,7 @@ pub struct AccountBacsDebitPaymentsSettings {
     pub display_name: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BrandingSettings {
     /// (ID of a [file upload](https://stripe.com/docs/guides/file-upload)) An icon for the account.
     ///
@@ -470,13 +470,13 @@ pub struct BrandingSettings {
     pub secondary_color: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountCardIssuingSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tos_acceptance: Option<Box<CardIssuingAccountTermsOfService>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CardPaymentsSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub decline_on: Option<Box<DeclineChargeOn>>,
@@ -489,7 +489,7 @@ pub struct CardPaymentsSettings {
     pub statement_descriptor_prefix: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DashboardSettings {
     /// The display name for this account.
     ///
@@ -504,7 +504,7 @@ pub struct DashboardSettings {
     pub timezone: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DeclineChargeOn {
     /// Whether Stripe automatically declines charges with an incorrect ZIP or postal code.
     ///
@@ -517,7 +517,7 @@ pub struct DeclineChargeOn {
     pub cvc_failure: bool,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PaymentsSettings {
     /// The default text that appears on credit card statements when a charge is made.
     ///
@@ -534,7 +534,7 @@ pub struct PaymentsSettings {
     pub statement_descriptor_kanji: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PayoutSettings {
     /// A Boolean indicating if Stripe should try to reclaim negative balances from an attached bank account.
     ///
@@ -551,14 +551,14 @@ pub struct PayoutSettings {
     pub statement_descriptor: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountSepaDebitPaymentsSettings {
     /// SEPA creditor identifier that identifies the company making the payment.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub creditor_id: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct TosAcceptance {
     /// The Unix timestamp marking when the account representative accepted their service agreement.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -577,7 +577,7 @@ pub struct TosAcceptance {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountUnificationAccountController {
     /// `true` if the Connect application retrieving the resource controls the account and can therefore exercise [platform controls](https://stripe.com/docs/connect/platform-controls-for-standard-accounts).
     ///
@@ -592,7 +592,7 @@ pub struct AccountUnificationAccountController {
     pub type_: AccountUnificationAccountControllerType,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CardIssuingAccountTermsOfService {
     /// The Unix timestamp marking when the account representative accepted the service agreement.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -607,7 +607,7 @@ pub struct CardIssuingAccountTermsOfService {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Company {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Box<Address>>,
@@ -682,12 +682,12 @@ pub struct Company {
     pub verification: Option<Box<CompanyVerification>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CompanyVerification {
     pub document: CompanyVerificationDocument,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CompanyVerificationDocument {
     /// The back of a document returned by a [file upload](https://stripe.com/docs/api#create_file) with a `purpose` value of `additional_verification`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -708,7 +708,7 @@ pub struct CompanyVerificationDocument {
     pub front: Option<Box<Expandable<File>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct LegalEntityUboDeclaration {
     /// The Unix timestamp marking when the beneficial owner attestation was made.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -723,7 +723,7 @@ pub struct LegalEntityUboDeclaration {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct TransferSchedule {
     /// The number of days charges for the account will be held before being paid out.
     pub delay_days: u32,
@@ -1010,7 +1010,7 @@ impl<'a> UpdateAccount<'a> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AcceptTos {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Box<Timestamp>>,
@@ -1025,7 +1025,7 @@ pub struct AcceptTos {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub branding: Option<Box<BrandingSettingsParams>>,
@@ -1043,7 +1043,7 @@ pub struct AccountSettingsParams {
     pub payouts: Option<Box<PayoutSettingsParams>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CompanyParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,
@@ -1097,7 +1097,7 @@ pub struct CompanyParams {
     pub verification: Option<Box<CompanyVerificationParams>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilities {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit_payments: Option<Box<CreateAccountCapabilitiesAcssDebitPayments>>,
@@ -1172,7 +1172,7 @@ pub struct CreateAccountCapabilities {
     pub transfers: Option<Box<CreateAccountCapabilitiesTransfers>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocuments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_account_ownership_verification:
@@ -1199,7 +1199,7 @@ pub struct CreateAccountDocuments {
     pub proof_of_registration: Option<Box<CreateAccountDocumentsProofOfRegistration>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PersonParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,
@@ -1262,7 +1262,7 @@ pub struct PersonParams {
     pub verification: Option<PersonVerificationParams>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilities {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit_payments: Option<Box<UpdateAccountCapabilitiesAcssDebitPayments>>,
@@ -1337,7 +1337,7 @@ pub struct UpdateAccountCapabilities {
     pub transfers: Option<Box<UpdateAccountCapabilitiesTransfers>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocuments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_account_ownership_verification:
@@ -1364,13 +1364,13 @@ pub struct UpdateAccountDocuments {
     pub proof_of_registration: Option<Box<UpdateAccountDocumentsProofOfRegistration>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountSettingsParamsCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tos_acceptance: Option<Box<AccountSettingsParamsCardIssuingTosAcceptance>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BrandingSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<String>>,
@@ -1385,7 +1385,7 @@ pub struct BrandingSettingsParams {
     pub secondary_color: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CardPaymentsSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub decline_on: Option<Box<DeclineChargeOnParams>>,
@@ -1394,7 +1394,7 @@ pub struct CardPaymentsSettingsParams {
     pub statement_descriptor_prefix: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CompanyParamsOwnershipDeclaration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Box<Timestamp>>,
@@ -1406,199 +1406,199 @@ pub struct CompanyParamsOwnershipDeclaration {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CompanyVerificationParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<VerificationDocumentParams>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesAcssDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesAfterpayClearpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesAuBecsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesBacsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesBancontactPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesBoletoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesCardPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesCartesBancairesPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesEpsPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesFpxPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesGiropayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesGrabpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesIdealPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesJcbPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesKlarnaPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesLegacyPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesOxxoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesP24Payments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesSepaDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesSofortPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesTaxReportingUs1099K {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesTaxReportingUs1099Misc {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountCapabilitiesTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsBankAccountOwnershipVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsCompanyLicense {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsCompanyMemorandumOfAssociation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsCompanyMinisterialDecree {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsCompanyRegistrationVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsCompanyTaxIdVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateAccountDocumentsProofOfRegistration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PaymentsSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub statement_descriptor: Option<Box<String>>,
@@ -1610,7 +1610,7 @@ pub struct PaymentsSettingsParams {
     pub statement_descriptor_kanji: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PayoutSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub debit_negative_balances: Option<Box<bool>>,
@@ -1622,7 +1622,7 @@ pub struct PayoutSettingsParams {
     pub statement_descriptor: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PersonParamsDob {
     pub day: i64,
 
@@ -1631,193 +1631,193 @@ pub struct PersonParamsDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesAcssDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesAfterpayClearpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesAuBecsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesBacsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesBancontactPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesBoletoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesCardPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesCartesBancairesPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesEpsPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesFpxPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesGiropayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesGrabpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesIdealPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesJcbPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesKlarnaPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesLegacyPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesOxxoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesP24Payments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesSepaDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesSofortPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesTaxReportingUs1099K {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesTaxReportingUs1099Misc {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountCapabilitiesTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsBankAccountOwnershipVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsCompanyLicense {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsCompanyMemorandumOfAssociation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsCompanyMinisterialDecree {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsCompanyRegistrationVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsCompanyTaxIdVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct UpdateAccountDocumentsProofOfRegistration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Box<Vec<String>>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct AccountSettingsParamsCardIssuingTosAcceptance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Box<Timestamp>>,
@@ -1829,7 +1829,7 @@ pub struct AccountSettingsParamsCardIssuingTosAcceptance {
     pub user_agent: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DeclineChargeOnParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub avs_failure: Option<Box<bool>>,
@@ -1838,7 +1838,7 @@ pub struct DeclineChargeOnParams {
     pub cvc_failure: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct TransferScheduleParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub delay_days: Option<DelayDays>,

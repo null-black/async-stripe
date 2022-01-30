@@ -10,7 +10,7 @@ use crate::params::{Deleted, Expand, Expandable, List, Metadata, Object, RangeQu
 use crate::resources::{Account, BankAccount, Card};
 
 /// The resource representing a Stripe "TransferRecipient".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Recipient {
     /// Unique identifier for the object.
     pub id: RecipientId,

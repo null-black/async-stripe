@@ -12,7 +12,7 @@ use crate::resources::Currency;
 /// The resource representing a Stripe "Coupon".
 ///
 /// For more details see <https://stripe.com/docs/api/coupons/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Coupon {
     /// Unique identifier for the object.
     pub id: CouponId,
@@ -133,7 +133,7 @@ impl Object for Coupon {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CouponAppliesTo {
     /// A list of product IDs this coupon applies to.
     pub products: Vec<String>,
@@ -303,7 +303,7 @@ impl<'a> UpdateCoupon<'a> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateCouponAppliesTo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub products: Option<Box<Vec<String>>>,

@@ -12,7 +12,7 @@ use crate::resources::{Account, BalanceTransaction, Charge, Currency, TransferRe
 /// The resource representing a Stripe "Transfer".
 ///
 /// For more details see <https://stripe.com/docs/api/transfers/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Transfer {
     /// Unique identifier for the object.
     pub id: TransferId,

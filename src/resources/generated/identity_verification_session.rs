@@ -9,7 +9,7 @@ use crate::params::{Expandable, Metadata, Object, Timestamp};
 use crate::resources::{Address, IdentityVerificationReport};
 
 /// The resource representing a Stripe "GelatoVerificationSession".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct IdentityVerificationSession {
     /// Unique identifier for the object.
     pub id: IdentityVerificationSessionId,
@@ -86,7 +86,7 @@ impl Object for IdentityVerificationSession {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoSessionLastError {
     /// A short machine-readable string giving the reason for the verification or user-session failure.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -97,7 +97,7 @@ pub struct GelatoSessionLastError {
     pub reason: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoVerificationSessionOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<Box<GelatoSessionDocumentOptions>>,
@@ -106,7 +106,7 @@ pub struct GelatoVerificationSessionOptions {
     pub id_number: Option<Box<GelatoSessionIdNumberOptions>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoSessionDocumentOptions {
     /// Array of strings of allowed identity document types.
     ///
@@ -129,10 +129,10 @@ pub struct GelatoSessionDocumentOptions {
     pub require_matching_selfie: Option<Box<bool>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoSessionIdNumberOptions {}
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoVerifiedOutputs {
     /// The user's verified address.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -159,7 +159,7 @@ pub struct GelatoVerifiedOutputs {
     pub last_name: Option<Box<String>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct GelatoDataVerifiedOutputsDate {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -174,7 +174,7 @@ pub struct GelatoDataVerifiedOutputsDate {
     pub year: Option<Box<i64>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct VerificationSessionRedaction {
     /// Indicates whether this object and its related objects have been redacted or not.
     pub status: VerificationSessionRedactionStatus,

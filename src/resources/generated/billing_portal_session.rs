@@ -10,7 +10,7 @@ use crate::params::{Expand, Expandable, Object, Timestamp};
 use crate::resources::BillingPortalConfiguration;
 
 /// The resource representing a Stripe "PortalSession".
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct BillingPortalSession {
     /// Unique identifier for the object.
     pub id: BillingPortalSessionId,

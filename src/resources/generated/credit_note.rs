@@ -15,7 +15,7 @@ use crate::resources::{
 /// The resource representing a Stripe "CreditNote".
 ///
 /// For more details see <https://stripe.com/docs/api/credit_notes/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreditNote {
     /// Unique identifier for the object.
     pub id: CreditNoteId,
@@ -150,7 +150,7 @@ impl Object for CreditNote {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreditNoteTaxAmount {
     /// The amount, in %s, of the tax.
     pub amount: i64,
@@ -162,7 +162,7 @@ pub struct CreditNoteTaxAmount {
     pub tax_rate: Expandable<TaxRate>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct DiscountsResourceDiscountAmount {
     /// The amount, in %s, of the discount.
     pub amount: i64,
@@ -321,7 +321,7 @@ impl<'a> UpdateCreditNote<'a> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct CreateCreditNoteLines {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<Box<i64>>,

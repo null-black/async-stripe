@@ -12,7 +12,7 @@ use crate::resources::{BalanceTransaction, BankAccount, Card, Currency};
 /// The resource representing a Stripe "Payout".
 ///
 /// For more details see <https://stripe.com/docs/api/payouts/object>
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Payout {
     /// Unique identifier for the object.
     pub id: PayoutId,
