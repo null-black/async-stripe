@@ -25,7 +25,8 @@ done
 cwd = "openapi"
 command = "wget"
 args = [
-    "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+#    "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+    "https://raw.githubusercontent.com/stripe/openapi/10fe9f5f7bac9e185365c55704ad9f09387d4881/openapi/spec3.json",
 ]
 dependencies = ["openapi-delete"]
 

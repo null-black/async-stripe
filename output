@@ -1,8 +1,0 @@
-[cargo-make] INFO - cargo make 0.35.8
-[cargo-make] INFO - Project: async-stripe
-[cargo-make] INFO - Build File: Makefile.toml
-[cargo-make] INFO - Task: openapi-install
-[cargo-make] INFO - Profile: development
-[cargo-make] INFO - Running Task: legacy-migration
-[cargo-make] INFO - Execute Command: "rm" "-f" "spec3.json"
-[cargo-make] INFO - Execute Command: "wget" "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json"
